@@ -36,5 +36,5 @@ node {
     stage "Deploy the Image"
         sh "docker stop hwf-mysql-prod || echo 'No Container deployed'"
         sh "docker rm hwf-mysql-prod || echo 'No Container to delete'"
-        sh "docker run -d -p 3306:3306 --name hwf-mysql-prod 'michaeljohn32/hwf-mysql:${buildVersion}'"
+        sh "export MYSQL_ALLOW_EMPTY_PASSWORD=1 && docker run -d -p 3306:3306 --name hwf-mysql-prod 'michaeljohn32/hwf-mysql:${buildVersion}'"
 }
