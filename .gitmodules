@@ -1,0 +1,3 @@
+[submodule "support_files/ansible/roles/mysql"]
+	path = support_files/ansible/roles/mysql
+	url = git@github.com:michaeljohn32/ansible-role-mysql.git
