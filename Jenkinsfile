@@ -8,6 +8,8 @@ node {
    stage 'Build Docker Image'
        def hwfMysqlAppImage 
        sh "/bin/ls"
+       // copy any needed files from git repo to target directory
+       sh "cp -R Dockerfile info.xml support_files target"
        def matcher = readFile('info.xml') =~ '<version>(.+)</version>'
        if (matcher) {
          buildVersion = matcher[0][1]
