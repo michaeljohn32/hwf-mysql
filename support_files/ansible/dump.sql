@@ -50,9 +50,8 @@ DROP TABLE IF EXISTS `Users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Users` (
   `ID` smallint(5) unsigned NOT NULL,
-  `username` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `username` (`username`)
+  `username` text(15) NOT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
