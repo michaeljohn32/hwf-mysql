@@ -1,0 +1,26 @@
+---
+
+- hosts: all
+  vars:
+    - mysql_databases: 
+      - name: hwf_runs
+    - mysql_users:
+      - name: test_user
+        host: "%"
+        password: testtesttest
+        priv: "*.*:ALL"
+  tasks:
+
+    - name: Check if database exists
+      command: mysql -e "SHOW DATABASES"|grep {{ item.name }}
+      with_items: "{{ mysql_databases }}"
+      ignore_errors: yes
+      register: db_output
+
+    - debug: var={{ item }}
+      with_items: db_output.results
+
+    - name: Add hwf-database to server
+      copy:
+        src: dump.sql
+        dest: /docker-entrypoint-initdb.d/hwf-runs.sql
