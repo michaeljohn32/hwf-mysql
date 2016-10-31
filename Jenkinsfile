@@ -9,7 +9,7 @@ node {
        def hwfMysqlAppImage 
        sh "/bin/ls"
        // copy any needed files from git repo to target directory
-       sh "mkdir target"
+       sh "mkdir target || echo 'target folder'"
        sh "cp -R Dockerfile info.xml support_files target"
        def matcher = readFile('info.xml') =~ '<version>(.+)</version>'
        if (matcher) {
